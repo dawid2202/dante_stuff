@@ -31,6 +31,34 @@ FAQ:
         cry_in_the_corner.gif
 
 
+/*dante error*/
+int handle_dante_error(int err_code) {
+    switch (err_code) {
+        case 0:
+            return 0;
+        case 1:
+            printf("Incorrect input"); return 1;
+        case 2:
+            printf("Incorrect input data"); return 2;
+        case 3:
+            return 3;
+        case 4:
+            printf("Couldn't open file"); return 4;
+        case 5:
+            printf("Couldn't create file"); return 5;
+        case 6:
+            printf("File corrupted"); return 6;
+        case 7:
+            printf("Unsupported file format"); return 7;
+        case 8:
+            printf("Failed to allocate memory"); return 8;
+        case 9:
+            printf("Not enough arguments"); return 9;
+        default:
+            return 0;
+    }
+}
+
 /*wskaźniki na funkcje*/
 typedef void (*FUN_WSK)();
 FUN_WSK T[5];
