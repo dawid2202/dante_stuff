@@ -23,7 +23,7 @@ FAQ:
     planowany input dante < wczytywany przez program
     zbyt głęboko w rekurencje
 > program przerwany - SIGBUS
-    "z pamięcią coś zdrowo odjebałeś" - Bedi, dsc roku 2021-22
+    "z pamięcią coś zdrowo odjebałeś" - @Bedi, dsc roku 2021-22
 >ja: działa jak powinien
     dante patrząc na output: NOPE
         szukaj niepotrzebnych białych znaków
@@ -57,7 +57,7 @@ int handle_dante_error(int err_code) {
         default:
             return 0;
     }
-}
+}    //podjebane od @Bedi :)
 
 /*wskaźniki na funkcje*/
 typedef void (*FUN_WSK)();
