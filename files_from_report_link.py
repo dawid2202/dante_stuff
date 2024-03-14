@@ -28,5 +28,5 @@ for file in danteFiles:
     fileToSave = requests.get(url.replace('index.html', file))
     with open(path+file[4:], "wb") as f:
         f.write(fileToSave.content)
-    with open(path+"/cmake-build-debug"+file[4:], "wb") as f:
+    with open(path+"/cmake-build-debug/"+file[4:], "wb") as f:
         f.write(fileToSave.content)
