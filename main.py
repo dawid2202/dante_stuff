@@ -52,6 +52,8 @@ def getTaskReply(subject_id, topic_id, task_id):
 def scrapeReport(url, path):
     if not os.path.exists(path):
         os.makedirs(path)
+    if not os.path.exists(path + "/cmake-build-debug"):
+        os.makedirs(path + "/cmake-build-debug")
     report = requests.get(url, cookies=COOKIES).text
 
     if report_html:
@@ -71,9 +73,11 @@ def scrapeReport(url, path):
         more_dante_files = re.findall('Pobierz wygenerowany plik: <a href="(.*)">', report)
 
         for entry in more_dante_files:
-            file = open(path + '/' + entry[4:], 'wb')
-            file.write(requests.get(url.replace('index.html', entry)).content)
-            file.close()
+            fileToSave = requests.get(url.replace('index.html', entry))
+            with open(path + '/' + entry[4:], 'wb') as file
+                file.write(fileToSave.content)
+            with open(path + '/cmake-build-debug/' + entry[4:], 'wb') as file
+                file.write(fileToSave.content)
 
 
 def nameSanitize(name):
