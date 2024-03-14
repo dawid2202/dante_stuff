@@ -13,6 +13,8 @@ danteFiles = re.findall('Pobierz wygenerowany plik: <a href="(.*)">', dante.text
 
 if not os.path.exists(path):
     os.makedirs(path)
+in not os.path.exists(path + "/cmake-build-debug"):
+    os.makedirs(path + "/cmake-build-debug")
 
 zip_files = requests.get(url.replace('index.html', 'source.zip'))
 file = open(path + '/source.zip', 'wb')
@@ -24,6 +26,7 @@ for file in danteFiles:
     if os.path.isfile(path+file[4:]):
         continue
     fileToSave = requests.get(url.replace('index.html', file))
-    f = open(path+file[4:], "wb")
-    f.write(fileToSave.content)
-    f.close()
+    with open(path+file[4:], "wb") as f:
+        f.write(fileToSave.content)
+    with open(path+"/cmake-build-debug"+file[4:], "wb") as f:
+        f.write(fileToSave.content)
