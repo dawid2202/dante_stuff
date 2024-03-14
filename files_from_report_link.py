@@ -21,6 +21,8 @@ file.close()
 ZipFile(path + '/source.zip').extractall(path=path)
 
 for file in danteFiles:
+    if os.path.isfile(path+file[4:]):
+        continue
     fileToSave = requests.get(url.replace('index.html', file))
     f = open(path+file[4:], "wb")
     f.write(fileToSave.content)
